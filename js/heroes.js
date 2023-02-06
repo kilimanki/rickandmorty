@@ -50,13 +50,38 @@ function createPagination() {
     createPages.id = `${i}`;
 
     createListOfpages.insertAdjacentElement('beforeend', createPages);
+    const childPagination = document.querySelectorAll('.pagination-list');
+    for (const child of createListOfpages.children) {
+      if (child.id === '1') {
+        child.classList.add('current');
+      }
+    }
+    if (createListOfpages.childElementCount > 5) {
+      childPagination.forEach(item => {
+        console.log(item.id);
+        if (item.id >= 5) {
+          item.classList.add('hiden');
+        }
+        if (Number(item.id) === 42) {
+          item.classList.remove('hiden');
+        }
+      });
+    }
 
     createPages.addEventListener('click', e => {
       let total = [];
       page = Number(e.target.id);
 
       total.push(page);
-      console.log(total[0]);
+      childPagination.forEach(item => {
+        if (Number(item.id) === 42) {
+          return;
+        }
+        if (item.id > 3) {
+          item.nextElementSibling.classList.remove('hiden');
+          item.previousElementSibling.classList.add('hiden');
+        }
+      });
 
       if (
         localStorage.getItem('number') !==
@@ -94,11 +119,6 @@ function createPagination() {
         Notiflix.Notify.success('Sup bro, it was all heroes!');
       }
     });
-    for (const child of createListOfpages.children) {
-      if (child.id === '1') {
-        child.classList.add('current');
-      }
-    }
   }
 
   prewBtn.addEventListener('click', prewPage);
@@ -106,8 +126,15 @@ function createPagination() {
 
 createPagination();
 nextBtn.addEventListener('click', nextPage);
-function nextPage() {
+function nextPage(e) {
   page += 1;
+  for (const child of createListOfpages.children) {
+    if (child.className.includes('current') === true && Number(child.id) >= 4) {
+      console.log(child.id);
+      child.nextElementSibling.classList.remove('hiden');
+      child.previousElementSibling.classList.add('hiden');
+    }
+  }
 
   localStorage.setItem('somePage', JSON.stringify(page));
   const idPage = document.getElementById(localStorage.getItem('somePage'));
@@ -127,12 +154,22 @@ function nextPage() {
   if (JSON.parse(localStorage.getItem('somePage')) === 42) {
     Notiflix.Notify.success('Sup bro, it was all heroes!');
   }
+
   getFetch().then(data => createMarkup(data));
 }
 prewBtn.addEventListener('click', prewPage);
 function prewPage() {
   page -= 1;
-
+  for (const child of createListOfpages.children) {
+    if (child.className.includes('current') === true && Number(child.id) >= 4) {
+      if (Number(child.id) === 42) {
+        child.previousElementSibling.classList.remove('hiden');
+      } else {
+        child.previousElementSibling.classList.remove('hiden');
+        child.nextElementSibling.classList.add('hiden');
+      }
+    }
+  }
   localStorage.setItem('somePage', JSON.stringify(page));
   if (JSON.parse(localStorage.getItem('somePage')) === 1) {
     prewBtn.disabled = true;
@@ -149,5 +186,6 @@ function prewPage() {
     });
     idPrewPage.classList.add('current');
   }
+
   getFetch().then(data => createMarkup(data));
 }

@@ -313,6 +313,7 @@ padding-top: 20px;
 .make-list{
     display: flex;
 }
+
 .pagination-list{
 
     margin: 2px;
@@ -350,6 +351,7 @@ padding-top: 20px;
 }
 .hiden{
     display: none;
+    pointer-events: none;
 }
 /* .five{
     margin-right: 20px;
@@ -389,11 +391,11 @@ right: 47%;
                 font-weight: 500;
                 line-height: 19px;
 }
-.seventy-facts.is-hiden{
+/* .seventy-facts.is-hiden{
     display: none;
     opacity: 0;
     pointer-events: none;
-}
+} */
 .seventy-facts{
     
 font-family: Lora, serif;
