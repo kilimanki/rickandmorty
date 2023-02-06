@@ -4,13 +4,14 @@ const listNews = document.querySelector('.create-list');
 const createListOfpages = document.querySelector('.make-list');
 const nextBtn = document.querySelector('.btn-next');
 const prewBtn = document.querySelector('.btn-prew');
-
+const summ = 0;
 let page = 1;
 async function getFetch() {
   try {
     const response = await axios.get(
       ` https://rickandmortyapi.com/api/character/?page=${page}`
     );
+
     return response.data.results;
   } catch (error) {
     console.log(error);
@@ -43,7 +44,9 @@ function createMarkup(images) {
 let zxc = [];
 prewBtn.disabled = true;
 function createPagination() {
-  for (let i = 1; i < 43; i++) {
+  const difference = Math.ceil(826 / 20) + 1;
+  console.log(difference);
+  for (let i = 1; i < difference; i++) {
     const createPages = document.createElement('button');
     createPages.textContent = Number(`${i}`);
     createPages.classList.add('pagination-list');
@@ -55,11 +58,13 @@ function createPagination() {
       if (child.id === '1') {
         child.classList.add('current');
       }
+      if (child.id === '2') {
+        child.classList.add('for-space');
+      }
     }
     if (createListOfpages.childElementCount > 5) {
       childPagination.forEach(item => {
-        console.log(item.id);
-        if (item.id >= 5) {
+        if (item.id >= 4) {
           item.classList.add('hiden');
         }
         if (Number(item.id) === 42) {
@@ -77,11 +82,24 @@ function createPagination() {
         if (Number(item.id) === 42) {
           return;
         }
-        if (item.id > 3) {
+        if (Number(item.id) >= 2) {
+          item.nextElementSibling.classList.remove('hiden');
+        }
+        if (item.id >= 4) {
           item.nextElementSibling.classList.remove('hiden');
           item.previousElementSibling.classList.add('hiden');
         }
       });
+
+      // for (const child of createListOfpages.children) {
+      //   if (
+      //     child.className.includes('current') === true &&
+      //     Number(child.id) >= 3
+      //   ) {
+      //     child.nextElementSibling.classList.remove('hiden');
+      //     child.previousElementSibling.classList.add('hiden');
+      //   }
+      // }
 
       if (
         localStorage.getItem('number') !==
@@ -129,8 +147,16 @@ nextBtn.addEventListener('click', nextPage);
 function nextPage(e) {
   page += 1;
   for (const child of createListOfpages.children) {
-    if (child.className.includes('current') === true && Number(child.id) >= 4) {
-      console.log(child.id);
+    if (child.className.includes('current') === true) {
+      child.nextElementSibling.classList.remove('hiden');
+    }
+    if (
+      child.className.includes('current') === true &&
+      Number(child.id) === 3
+    ) {
+      child.nextElementSibling.classList.remove('hiden');
+    }
+    if (child.className.includes('current') === true && Number(child.id) > 3) {
       child.nextElementSibling.classList.remove('hiden');
       child.previousElementSibling.classList.add('hiden');
     }
@@ -161,6 +187,9 @@ prewBtn.addEventListener('click', prewPage);
 function prewPage() {
   page -= 1;
   for (const child of createListOfpages.children) {
+    if (child.className.includes('current') === true) {
+      child.classList.remove('hiden');
+    }
     if (child.className.includes('current') === true && Number(child.id) >= 4) {
       if (Number(child.id) === 42) {
         child.previousElementSibling.classList.remove('hiden');
@@ -170,6 +199,7 @@ function prewPage() {
       }
     }
   }
+
   localStorage.setItem('somePage', JSON.stringify(page));
   if (JSON.parse(localStorage.getItem('somePage')) === 1) {
     prewBtn.disabled = true;

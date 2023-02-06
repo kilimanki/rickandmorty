@@ -20,10 +20,22 @@ body{
     font-family: 'DM Sans', sans-serif;
 
 }
-img{
 
+img{
+width: 200px;
     object-fit: cover;
     display: block;
+}
+.pagination-list.for-space::after{
+    content: '.....';
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+
+        left: 90%;
+            top: 40%;
+
 }
 
 *{
@@ -167,9 +179,9 @@ margin-left: auto;
         width: 100%;
     }
 }
-@media screen and (min-width:1198px) {
+@media screen and (min-width:1060px) {
     .container {
-        width: 1200px;
+        width: 1060px;
         padding-right: 15px;
         padding-left: 15px;
         margin-left: auto;
@@ -312,6 +324,7 @@ padding-top: 20px;
 }
 .make-list{
     display: flex;
+
 }
 
 .pagination-list{
@@ -330,6 +343,10 @@ padding-top: 20px;
         font-weight: 500;
         line-height: 19px;
 
+}
+.for-space {
+    margin-right: 20px;
+    position: relative;
 }
 .pagination-list:hover{
     background-color: hsl(323deg 100% 49% / 93%);
