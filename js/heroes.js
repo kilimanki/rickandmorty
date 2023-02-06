@@ -48,36 +48,7 @@ function createPagination() {
     createPages.textContent = Number(`${i}`);
     createPages.classList.add('pagination-list');
     createPages.id = `${i}`;
-    // const asd = createListOfpages.childElementCount;
 
-    // zxc.push(asd);
-    // if (zxc.length > 5) {
-    //   createPages.classList.add('hiden');
-    //   for (const child of createListOfpages.children) {
-    //     if (child.id >= 40) {
-    //       createPages.classList.remove('hiden');
-    //     }
-    //   }
-    //   // for (const child of createListOfpages.children) {
-    //   // console.log(child.classList.contains('current'));
-    //   // if (child.classList.contains('current')) {
-    //   //   console.log('gz');
-    //   //   // child.nextElementSibling.classList.remove('hiden');
-    //   // }
-    //   // }
-    //   // if (createListOfpages.childElementCount.classList.contains('current')) {
-    //   //   console.log('nice');
-    //   // }
-    //   // items[0].classList.remove('_hide');
-    //   // if (active.parentElement.previousElementSibling) {
-    //   //   active.parentElement.previousElementSibling.classList.remove('_hide');
-    //   // }
-    //   // active.parentElement.classList.remove('_hide');
-    //   // if (active.parentElement.nextElementSibling) {
-    //   //   active.parentElement.nextElementSibling.classList.remove('_hide');
-    //   // }
-    //   // items[items.length - 1].classList.remove('_hide');
-    // }
     createListOfpages.insertAdjacentElement('beforeend', createPages);
 
     createPages.addEventListener('click', e => {
@@ -156,14 +127,6 @@ function nextPage() {
   if (JSON.parse(localStorage.getItem('somePage')) === 42) {
     Notiflix.Notify.success('Sup bro, it was all heroes!');
   }
-  // for (const child of createListOfpages.children) {
-  //   if (child.classList.contains('current') && child.id >= 5) {
-  //     child.nextElementSibling.classList.remove('hiden');
-
-  //     child.previousElementSibling.classList.add('hiden');
-  //   }
-  // }
-
   getFetch().then(data => createMarkup(data));
 }
 prewBtn.addEventListener('click', prewPage);
@@ -186,14 +149,5 @@ function prewPage() {
     });
     idPrewPage.classList.add('current');
   }
-  // for (const child of createListOfpages.children) {
-  //   child.previousElementSibling.classList.remove('hiden');
-  //   child.nextElementSibling.classList.remove('hiden');
-  // }
   getFetch().then(data => createMarkup(data));
 }
-
-// function hideOverPages() {
-
-// }
-// hideOverPages();
