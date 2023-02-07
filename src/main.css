@@ -58,7 +58,10 @@ footer{
     height: 100px;
 }
 
-
+.hiden-img{
+    display: none;
+    pointer-events: none;
+}
 @media screen and (min-width:769px) {
     .nav-bar{
         display: block;
@@ -332,6 +335,8 @@ padding-top: 20px;
 }
 .nav-bar{
     transition: color 0.5s;
+    
+
 }
 .make-list{
     display: flex;
@@ -454,11 +459,47 @@ font-size: 18px;
         transform: translateY(0);
     }
 }
+@keyframes positionImage {
+    from {
+        top: 50%;
+            left: 50%;
+    }
+
+    to {
+        top: 10%;
+            left: 50%;
+    }
+}
+.rotate{
+    animation: positionImage 2s normal forwards;
+   
+}
 /* .episodes{
     display: grid;
     justify-content: center;
     align-items: center;
 } */
+.rotate-text{
+font-family: Lora, serif;
+        font-size: 20px;
+        font-style: normal;
+        line-height: 1.375;
+}
+.master-rick{
+    transform: scaleX(-1);
+    width: 100px;
+}
+.ms-nav{
+        font-family: Titan One;
+            font-size: 24px;
+            font-style: normal;
+            line-height: 1.375;
+            display: flex;
+            color: #fff;
+            cursor: pointer;
+            align-items: center;
+         margin-left: auto;
+}
 .seventy-facts p{
     color: white;
     border: 1px solid black;
@@ -474,4 +515,14 @@ font-size: 18px;
 }
 .random-title{
     color: white;
+}
+@keyframes colorNav {
+    from {
+        color: white;
+    }
+
+    to {
+       color: red;
+    }
+
 }

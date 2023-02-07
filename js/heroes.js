@@ -89,6 +89,13 @@ function createPagination() {
           item.nextElementSibling.classList.remove('hiden');
           item.previousElementSibling.classList.add('hiden');
         }
+
+        // if (
+        //   Number(item.id) !== Number(item.nextElementSibling.id + 1) &&
+        //   item.className.includes('hiden') === false
+        // ) {
+        //   console.log('trouble');
+        // }
       });
 
       if (
