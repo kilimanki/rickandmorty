@@ -64,7 +64,7 @@ function createPagination() {
     }
     if (createListOfpages.childElementCount > 5) {
       childPagination.forEach(item => {
-        if (item.id >= 4) {
+        if (item.id >= 3) {
           item.classList.add('hiden');
         }
         if (Number(item.id) === 42) {
@@ -90,16 +90,6 @@ function createPagination() {
           item.previousElementSibling.classList.add('hiden');
         }
       });
-
-      // for (const child of createListOfpages.children) {
-      //   if (
-      //     child.className.includes('current') === true &&
-      //     Number(child.id) >= 3
-      //   ) {
-      //     child.nextElementSibling.classList.remove('hiden');
-      //     child.previousElementSibling.classList.add('hiden');
-      //   }
-      // }
 
       if (
         localStorage.getItem('number') !==
@@ -136,10 +126,13 @@ function createPagination() {
       if (JSON.parse(localStorage.getItem('number'))[0] === 42) {
         Notiflix.Notify.success('Sup bro, it was all heroes!');
       }
+      if (createListOfpages.getElementsByClassName('hiden').length <= 38) {
+        createListOfpages.lastElementChild.classList.add('for-space-second');
+      }
     });
   }
 
-  prewBtn.addEventListener('click', prewPage);
+  // prewBtn.addEventListener('click', prewPage);
 }
 
 createPagination();
@@ -159,6 +152,9 @@ function nextPage(e) {
     if (child.className.includes('current') === true && Number(child.id) > 3) {
       child.nextElementSibling.classList.remove('hiden');
       child.previousElementSibling.classList.add('hiden');
+    }
+    if (createListOfpages.getElementsByClassName('hiden').length <= 38) {
+      createListOfpages.lastElementChild.classList.add('for-space-second');
     }
   }
 
@@ -193,10 +189,18 @@ function prewPage() {
     if (child.className.includes('current') === true && Number(child.id) >= 4) {
       if (Number(child.id) === 42) {
         child.previousElementSibling.classList.remove('hiden');
+      } else if (Number(child.id) === 41) {
+        child.previousElementSibling.classList.remove('hiden');
       } else {
         child.previousElementSibling.classList.remove('hiden');
         child.nextElementSibling.classList.add('hiden');
       }
+    }
+    if (child.className.includes('current') === true && child.id === '2') {
+      child.nextElementSibling.classList.add('hiden');
+    }
+    if (createListOfpages.getElementsByClassName('hiden').length >= 39) {
+      createListOfpages.lastElementChild.classList.remove('for-space-second');
     }
   }
 

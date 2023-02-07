@@ -37,6 +37,17 @@ width: 200px;
             top: 40%;
 
 }
+.pagination-list.for-space-second::before {
+    content: '.....';
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+
+    right: 90%;
+    top: 40%;
+
+}
 
 *{
     padding: 0;
@@ -346,6 +357,10 @@ padding-top: 20px;
 }
 .for-space {
     margin-right: 20px;
+    position: relative;
+}
+.for-space-second {
+    margin-left: 20px;
     position: relative;
 }
 .pagination-list:hover{
