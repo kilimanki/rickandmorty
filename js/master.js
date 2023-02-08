@@ -1,15 +1,14 @@
+import animateScrollTo from 'animated-scroll-to';
 const msNav = document.querySelector('.ms-nav');
+
 msNav.addEventListener('click', e => {
-  const image = document.createElement('img');
+  const imageRotated = document.querySelector('.rotate-image');
   const text = document.createElement('p');
   text.classList.add('rotate-text');
   text.textContent = 'Hello ! i`m ur master of navigation';
-  image.src = '/rick-and-morty-30973.b77fda54.png';
+  imageRotated.style.opacity = '1';
+  document.querySelector('.facts').style.opacity = '0';
 
-  image.setAttribute(
-    'style',
-    'position:absolute; top:50%; left:50%;  transform: scaleX(-1); margin-top:30px; width:150px'
-  );
   text.setAttribute(
     'style',
     'position:absolute; top:50%; left:50%; color:white'
@@ -21,28 +20,59 @@ msNav.addEventListener('click', e => {
   document.querySelector('header').style.pointerEvents = 'none';
   document.querySelector('main').style.pointerEvents = 'none';
   document.querySelector('footer').style.pointerEvents = 'none';
-  //   document.main.style.opacity = '0.5';
-  //   document.body.style.pointerEvents = 'none';
-  document.body.insertAdjacentElement('beforeend', text);
-  document.body.insertAdjacentElement('beforeend', image);
+  document.querySelector('.for-next').style.opacity = '0';
 
+  document.body.insertAdjacentElement('beforeend', text);
   setTimeout(() => {
-    image.classList.add('rotate');
+    imageRotated.classList.add('rotate');
     text.textContent = 'Here u can see our site navigation';
     document.querySelector('header').style.opacity = '1';
     text.classList.add('rotate');
 
     document.querySelector('.nav-bar').style.animation =
       'colorNav 1s infinite alternate';
-  }, 3000);
+  }, 1000);
   setTimeout(() => {
     const btnK = document.createElement('button');
-    btnK.textContent = 'Got it!';
+    btnK.textContent = 'Ok';
     btnK.setAttribute('style', 'position:absolute; top:5%; left:50%; ');
     document.body.insertAdjacentElement('afterbegin', btnK);
     btnK.addEventListener('click', e => {
-      const laugh = `<iframe src="https://vlipsy.com/embed/uFjK73rk" width="640" height="360" frameborder="0"></iframe>`;
-      document.querySelector('main').insertAdjacentElement('afterend', laugh);
+      const cord = document.querySelector('.random-btn');
+      animateScrollTo(cord, 3000);
+      imageRotated.classList.add('second-rotate');
+      imageRotated.classList.remove('rotate');
+      document.querySelector('.facts').style.opacity = '1';
+      text.setAttribute(
+        'style',
+        'top: 70%; left: 20%; position: absolute; color:white'
+      );
+      text.classList.remove('rotate');
+      text.classList.add('second-rotate-text');
+      document.querySelector('.for-next').style.opacity = '1';
+      text.textContent = 'U can get some facts and watch trailer of new season';
+      const nextButton = document.createElement('button');
+      nextButton.setAttribute(
+        'style',
+        'position:absolute; top:100%; left:30%; '
+      );
+      btnK.remove();
+      document.body.insertAdjacentElement('afterbegin', nextButton);
+      nextButton.textContent = 'Got it!';
+      document.querySelector('main').style.opacity = '1';
+      nextButton.addEventListener('click', e => {
+        document.querySelector('footer').style.opacity = '1';
+        document.querySelector('header').style.pointerEvents = 'all';
+        document.querySelector('main').style.pointerEvents = 'all';
+        document.querySelector('footer').style.pointerEvents = 'all';
+        imageRotated.classList.remove('second-rotate');
+        imageRotated.classList.add('rotate');
+        nextButton.remove();
+        imageRotated.style.opacity = '0';
+        text.remove();
+        // msNav.remove();
+        document.querySelector('.nav-bar').style.animation = 'none';
+      });
     });
-  }, 5000);
+  }, 2000);
 });
