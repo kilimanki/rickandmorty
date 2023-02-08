@@ -45,7 +45,7 @@ msNav.addEventListener('click', e => {
       document.querySelector('.facts').style.opacity = '1';
       text.setAttribute(
         'style',
-        'top: 70%; left: 20%; position: absolute; color:white'
+        'top: 100%; left: 20%; position: absolute; color:white'
       );
       text.classList.remove('rotate');
       text.classList.add('second-rotate-text');
@@ -54,7 +54,7 @@ msNav.addEventListener('click', e => {
       const nextButton = document.createElement('button');
       nextButton.setAttribute(
         'style',
-        'position:absolute; top:100%; left:30%; '
+        'position:absolute; top:120%; left:30%; '
       );
       btnK.remove();
       document.body.insertAdjacentElement('afterbegin', nextButton);

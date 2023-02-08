@@ -618,7 +618,7 @@ font-family: Lora, serif;
 }
 .second-rotate {
     animation: positionImageNext 1s normal forwards;
-        top: 93%;
+        top: 123%;
             left: 20%;
                 transform: scale(-1, -1)
 }
