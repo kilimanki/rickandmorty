@@ -45,7 +45,7 @@ msNav.addEventListener('click', e => {
       document.querySelector('.facts').style.opacity = '1';
       text.setAttribute(
         'style',
-        'top: 100%; left: 20%; position: absolute; color:white'
+        'top: 100%; left: 15%; position: absolute; color:white'
       );
       text.classList.remove('rotate');
       text.classList.add('second-rotate-text');

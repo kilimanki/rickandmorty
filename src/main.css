@@ -623,7 +623,7 @@ font-family: Lora, serif;
 .second-rotate {
     animation: positionImageNext 1s normal forwards;
         top: 123%;
-            left: 20%;
+            left: 15%;
                 transform: scale(-1, -1)
 }
 .master-rick{
