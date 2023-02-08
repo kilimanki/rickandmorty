@@ -64,6 +64,13 @@ footer{
 }
 @media screen and (min-width:769px) {
 
+    .hero-list{
+        width: 330px;
+        margin: 10px;
+    }
+    .create-list{
+        flex-direction: row-reverse;
+    }
     .random-title{
         font-size: 25px;
     }
@@ -225,15 +232,7 @@ margin-left: auto;
     .container{
         width: 420px;
     }
-.btn-prew{
-    width: 20px;
-}
-.btn-next{
-    width: 20px;
-}
-.pagination-list{
-    width: 20px;
-}
+
     .container-main{
         padding-top: 30px;
     }
@@ -298,6 +297,16 @@ margin-left: auto;
     display: none;
 }
 @media screen and (min-width:1060px) {
+        .hero-list {
+                width: 410px;
+                margin: 30px;
+            }
+        
+            .create-list {
+                flex-direction: inherit;
+                justify-content: space-around;
+            }
+         
     .container {
         width: 1060px;
         padding-right: 15px;
